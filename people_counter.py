@@ -12,7 +12,8 @@
 # import the necessary packages
 from pyimagesearch.centroidtracker import CentroidTracker
 from pyimagesearch.trackableobject import TrackableObject
-from imutils.video import VideoStream
+#from imutils.video import VideoStream
+from imutils.video.pivideostream import PiVideoStream
 from imutils.video import FPS
 import numpy as np
 import argparse
@@ -51,7 +52,8 @@ net = cv2.dnn.readNetFromCaffe(args["prototxt"], args["model"])
 # if a video path was not supplied, grab a reference to the webcam
 if not args.get("input", False):
 	print("[INFO] starting video stream...")
-	vs = VideoStream(src=0).start()
+	#vs = VideoStream(src=0).start()
+	vs=PiVideoStream().start()
 	time.sleep(2.0)
 
 # otherwise, grab a reference to the video file
@@ -189,7 +191,7 @@ while True:
 	# draw a horizontal line in the center of the frame -- once an
 	# object crosses this line we will determine whether they were
 	# moving 'up' or 'down'
-	cv2.line(frame, (0, H // 2), (W, H // 2), (0, 255, 255), 2)
+	cv2.line(frame, (W // 2, 0), (W // 2, H), (0, 255, 255), 2)
 
 	# use the centroid tracker to associate the (1) old object
 	# centroids with (2) the newly computed object centroids
