@@ -12,6 +12,7 @@
 # import the necessary packages
 from pyimagesearch.centroidtracker import CentroidTracker
 from pyimagesearch.trackableobject import TrackableObject
+from imutils.video import VideoStream
 from imutils.video import FPS
 import numpy as np
 import argparse
@@ -30,9 +31,9 @@ ap.add_argument("-i", "--input", type=str,
                 help="path to optional input video file")
 ap.add_argument("-o", "--output", type=str,
                 help="path to optional output video file")
-ap.add_argument("-c", "--confidence", type=float, default=0.4,
+ap.add_argument("-c", "--confidence", type=float, default=0.3,
                 help="minimum probability to filter weak detections")
-ap.add_argument("-s", "--skip-frames", type=int, default=30,
+ap.add_argument("-s", "--skip-frames", type=int, default=20,
                 help="# of skip frames between detections")
 args = vars(ap.parse_args())
 
@@ -51,13 +52,13 @@ net = cv2.dnn.readNetFromCaffe(args["prototxt"], args["model"])
 if not args.get("input", False):
     print("[INFO] starting video stream...")
     # vs = VideoStream(src=0).start()
-    vs = PiVideoStream().start()
-    time.sleep(2.0)
+    vs = VideoStream (src = 0).start ()
+    time.sleep (2.0)
 
 # otherwise, grab a reference to the video file
 else:
-    print("[INFO] opening video file...")
-    vs = cv2.VideoCapture(args["input"])
+	print("[INFO] opening video file...")
+	vs = cv2.VideoCapture(args["input"])
 
 # initialize the video writer (we'll instantiate later if need be)
 writer = None
