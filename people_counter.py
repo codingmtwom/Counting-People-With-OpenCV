@@ -89,6 +89,7 @@ while True:
     # grab the next frame and handle if we are reading from either
     # VideoCapture or VideoStream
     frame = vs.read()
+    # When is a video we assign the frame, otherwise assign the camera frame, frame[1]
     frame = frame[1] if args.get("input", False) else frame
     
     # if we are viewing a video and we did not grab a frame then we
@@ -278,6 +279,7 @@ while True:
 fps.stop()
 print("[INFO] elapsed time: {:.2f}".format(fps.elapsed()))
 print("[INFO] approx. FPS: {:.2f}".format(fps.fps()))
+print("[INFO] Total counted people: {:.2f}".format(totalPeople))
 
 # check to see if we need to release the video writer pointer
 if writer is not None:
