@@ -100,7 +100,7 @@ while True:
 	if (CheckExitLineCrossing (CoordYCentroid, CoorYEntranceLine, CoorYExitLine)):
 		ExitCounter += 1
 	
-	print ("Total countours found: " + str (QttyOfContours)
+	print ("Total countours found: " + str (QttyOfContours))
 	
 	# Write entrance and exit counter values on frame and shows it
 	cv2.putText (Frame, "Entrances: {:0f}".format (str (EntranceCounter)), (10, 50), font, 0.5, (250, 0, 1), 2)

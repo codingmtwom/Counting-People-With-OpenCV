@@ -149,7 +149,7 @@ while True:
                 # if the class label is not a person, ignore it
                 #if CLASSES[idx] != "person":
                  #   continue
-                
+                print("********Object Detected: {}".format(CLASSES[idx]))
                 # compute the (x, y)-coordinates of the bounding box
                 # for the object
                 box = detections[0, 0, i, 3:7] * np.array([W, H, W, H])
