@@ -89,7 +89,7 @@ while True:
     # grab the next frame and handle if we are reading from either
     # VideoCapture or VideoStream
     frame = vs.read()
-    # When is a video we assign the frame, otherwise assign the camera frame, frame[1]
+    # When is a video we assign the frame, otherwise assign the camera frame[1]
     frame = frame[1] if args.get("input", False) else frame
     
     # if we are viewing a video and we did not grab a frame then we
@@ -147,8 +147,8 @@ while True:
                 idx = int(detections[0, 0, i, 1])
                 
                 # if the class label is not a person, ignore it
-                if CLASSES[idx] != "person":
-                    continue
+                #if CLASSES[idx] != "person":
+                 #   continue
                 
                 # compute the (x, y)-coordinates of the bounding box
                 # for the object
